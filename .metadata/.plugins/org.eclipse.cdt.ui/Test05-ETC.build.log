@@ -1,0 +1,42 @@
+16:34:31 **** Incremental Build of configuration Debug for project Test05-ETC ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function '__io_putchar':
+../Core/Src/main.c:48:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   48 |         HAL_UART_Transmit(&huart2, &c, 1, 10);
+      |                                    ^~
+      |                                    |
+      |                                    int *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'int *'
+  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:109:19: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  109 |                   printf("B1 Pushed.......\r\n");
+      |                   ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:109:19: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  109 |                   printf("B1 Pushed.......\r\n");
+      |                   ^~~~~~
+../Core/Src/main.c:109:19: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Test05-ETC.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\popo\STM32CubeIDE\workspace_1.13.1\Test05-ETC\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test05-ETC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test05-ETC.elf
+ 
+arm-none-eabi-size   Test05-ETC.elf 
+arm-none-eabi-objdump -h -S  Test05-ETC.elf  > "Test05-ETC.list"
+   text	   data	    bss	    dec	    hex	filename
+  10964	    112	   1976	  13052	   32fc	Test05-ETC.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test05-ETC.list
+ 
+
+16:34:32 Build Finished. 0 errors, 3 warnings. (took 1s.326ms)
+
